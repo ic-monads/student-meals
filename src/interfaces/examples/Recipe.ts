@@ -4,6 +4,7 @@ import ingredientQuantities from "./IngredientQuantities";
 import instructions from "./Instruction";
 
 let mashedPotatoes : Recipe = {
+  id : 1,
   name : "Mashed Potatoes",
   time : "1 hour",
   difficulty : 1,
@@ -14,6 +15,4 @@ let mashedPotatoes : Recipe = {
   instructions : instructions
 }
 
-let recipes : Recipe[] = [mashedPotatoes, mashedPotatoes];
-
-export default recipes;
+export default mashedPotatoes;
