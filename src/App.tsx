@@ -1,17 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import RecipeTile from "./components/recipes/RecipeTile";
+import mashedPotatoes from "./interfaces/examples/Recipe";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
+import RecipePage from './components/recipes/RecipePage';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RecipeTile recipe={mashedPotatoes} />
+  },
+  {
+    path: "recipe/:recipeId",
+    element: <RecipePage />
+  }
+])
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Student Meals
-        </p>
-      </header>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
