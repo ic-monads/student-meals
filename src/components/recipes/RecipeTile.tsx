@@ -19,7 +19,7 @@ function RecipeTile( { recipe } : {recipe : Recipe}) {
       <img src={recipe.images[0]} alt={recipe.name}/>
       <section className="recipe-info">
         <Link to={`/recipe/${recipe.id}`}>
-          <h2 className="recipe-name">{recipe.name}</h2>
+          <h2 className="text-3xl font-bold underline">{recipe.name}</h2>
         </Link>
         <p>Time: {recipe.time}</p>
         <p>Difficulty: <DifficultyRatingComponent difficulty={recipe.difficulty} /></p>
