@@ -2,25 +2,18 @@ import {Recipe} from "../../interfaces/recipes/Recipe";
 import React from "react";
 import { Link } from "react-router-dom";
 
-// const DifficultyRatingComponent = (difficulty : number) => {
-//   return (
-//     <div className="difficultyRating">
-//       {[...Array(5)].map((star) => {
-//         return (
-//           <span className={"star"} id={star}>&#9733</span>
-//         );
-//       })
-//       }
-//     </div>
-//   )
-// }
-
-interface RecipeTileProps {
-  recipe : Recipe;
+const DifficultyRatingComponent = ({difficulty} : { difficulty : number }) => {
+  return (
+    <div className="difficultyRating">
+      {Array.from(Array(5).keys()).map((star) => {
+        return <span className={"star"}>{(star <= difficulty - 1) ? '\u2605' : '\u2606'}</span>
+      })
+      }
+    </div>
+  )
 }
 
-function RecipeTile(props : RecipeTileProps) {
-  const { recipe } = props;
+function RecipeTile( {recipe } : {recipe : Recipe}) {
   return (
     <div className="recipe-tile">
       <img src={recipe.images[0]} alt={recipe.name}/>
@@ -29,7 +22,7 @@ function RecipeTile(props : RecipeTileProps) {
           <h2 className="recipe-name">{recipe.name}</h2>
         </Link>
         <p>Time: {recipe.time}</p>
-        <p>Difficulty: {recipe.difficulty}</p>
+        <p>Difficulty: <DifficultyRatingComponent difficulty={recipe.difficulty} /></p>
         <p>Cuisine : {recipe.cuisine}</p>
       </section>
     </div>

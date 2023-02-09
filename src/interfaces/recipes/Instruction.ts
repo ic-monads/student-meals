@@ -1,5 +1,5 @@
 export interface Instruction {
-  id : number | undefined;
+  id : string;
   text : string;
   image? : string;
 }

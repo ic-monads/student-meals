@@ -1,5 +1,5 @@
 export interface Equipment {
-  id : number | undefined;
+  id : string;
   name : string;
   image? : string;
   usage? : string;

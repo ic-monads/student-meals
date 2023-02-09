@@ -4,7 +4,7 @@ import ingredientQuantities from "./IngredientQuantities";
 import instructions from "./Instruction";
 
 let mashedPotatoes : Recipe = {
-  id : 1,
+  id : "1",
   name : "Mashed Potatoes",
   time : "1 hour",
   difficulty : 1,
