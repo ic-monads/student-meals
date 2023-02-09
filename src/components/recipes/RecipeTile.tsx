@@ -13,12 +13,12 @@ const DifficultyRatingComponent = ({difficulty} : { difficulty : number }) => {
   )
 }
 
-function RecipeTile( {recipe } : {recipe : Recipe}) {
+function RecipeTile( { recipe } : {recipe : Recipe}) {
   return (
     <div className="recipe-tile">
       <img src={recipe.images[0]} alt={recipe.name}/>
       <section className="recipe-info">
-        <Link to={`/recipes/${recipe.id}`}>
+        <Link to={`/recipe/${recipe.id}`}>
           <h2 className="recipe-name">{recipe.name}</h2>
         </Link>
         <p>Time: {recipe.time}</p>

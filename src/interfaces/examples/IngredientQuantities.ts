@@ -11,7 +11,7 @@ let sausages : Ingredient = {
 let sausagesQuantity : Quantity = {
   id : "1",
   amount : 8,
-  unit : "sausages",
+  unit : "",
 }
 
 let potatoes : Ingredient = {

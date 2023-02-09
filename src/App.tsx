@@ -1,17 +1,24 @@
 import React from 'react';
 import RecipeTile from "./components/recipes/RecipeTile";
 import mashedPotatoes from "./interfaces/examples/Recipe";
-import { BrowserRouter as Router } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
+import RecipePage from './components/recipes/RecipePage';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RecipeTile recipe={mashedPotatoes} />
+  },
+  {
+    path: "recipe/:recipeId",
+    element: <RecipePage />
+  }
+])
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <h1>Student Meals</h1>
-        <RecipeTile recipe={mashedPotatoes}/>
-      </div>
-    </Router>
+    <RouterProvider router={router} />
   );
 }
 

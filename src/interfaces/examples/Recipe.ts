@@ -16,3 +16,5 @@ let mashedPotatoes : Recipe = {
 }
 
 export default mashedPotatoes;
+
+export const recipes = [mashedPotatoes]
