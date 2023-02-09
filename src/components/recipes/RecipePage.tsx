@@ -11,8 +11,8 @@ export default function RecipePage() {
   const [recipe, setRecipe] = useState<Recipe>();
 
   useEffect(() => {
-    setRecipe(recipes.find(r => r.id == recipeId));
-  }, [])
+    setRecipe(recipes.find(r => r.id === recipeId));
+  }, [recipeId])
 
   return(
     <div>
