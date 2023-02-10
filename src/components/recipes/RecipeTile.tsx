@@ -15,7 +15,7 @@ const DifficultyRatingComponent = ({difficulty} : { difficulty : number }) => {
 
 function RecipeTile( { recipe } : {recipe : Recipe}) {
   return (
-    <div className="md:container md:mx-auto rounded border-amber-200 border-2 bg-amber-100">
+    <div className="rounded border-amber-200 border-2 bg-amber-100">
       <img className="w-full" src={recipe.images[0]} alt={recipe.name}/>
       <div>
         <Link to={`/recipe/${recipe.id}`}>
