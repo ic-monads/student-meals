@@ -16,7 +16,7 @@ interface IDatabaseContext {
 
 const DatabaseContext = React.createContext({} as IDatabaseContext);
 
-export function usefirestore() {
+export function useDatabase() {
     return React.useContext(DatabaseContext);
 }
 
@@ -26,7 +26,7 @@ export function DatabaseProvider({ children }: { children: any }) {
 
     useEffect(() => {
         if (currentUser) {
-            const entriesRef = query(collection(firestore, "entries"), where("userID", "==", currentUser.uid));
+            const entriesRef = query(collection(firestore, "test"), where("userID", "==", currentUser.uid));
 
             const entriesObserver = collectionData(entriesRef, { idField: "id" }).subscribe(receivedTestData => {
                 setTestData(receivedTestData as ITestData[]);

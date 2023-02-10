@@ -5,15 +5,26 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
 import RecipePage from './pages/recipes/RecipePage';
 import RecipesPage from './pages/recipes/RecipesPage';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
+import PrivateRoute from './components/auth/PrivateRoute';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RecipesPage />
+    element: <PrivateRoute><RecipesPage /></PrivateRoute>
   },
   {
     path: "recipe/:recipeId",
-    element: <RecipePage />
+    element: <PrivateRoute><RecipePage /></PrivateRoute>
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/signup",
+    element: <Signup />
   }
 ])
 
