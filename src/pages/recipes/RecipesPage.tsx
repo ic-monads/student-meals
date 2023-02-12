@@ -5,12 +5,13 @@ import { Recipe } from "../../interfaces/recipes/Recipe";
 
 function RecipesPage() {
     const defaultNumRecipes = 10;
+    const recipeIncrementation = 10;
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [numRecipes, setNumRecipes] = useState(defaultNumRecipes);
     const [loading, setLoading] = useState(false);
 
     const handleMoreClick = () => {
-        setNumRecipes((numRecipes) => numRecipes + 10);
+        setNumRecipes((numRecipes) => numRecipes + recipeIncrementation);
     }
 
     useEffect(() => {
