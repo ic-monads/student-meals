@@ -18,11 +18,8 @@ function RecipesPage() {
             setLoading(true);
             try {
                 const data = ExampleRecipeList.slice(0, numRecipes);
-                if(numRecipes === defaultNumRecipes) {
-                    setRecipes(data);
-                } else {
-                    setRecipes((recipes) => [...recipes, ...data]);
-                }
+                console.log(numRecipes);
+                setRecipes(data);
             } catch (e) {
                 console.log(e);
             } finally {
