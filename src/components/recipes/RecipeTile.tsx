@@ -15,16 +15,18 @@ const DifficultyRatingComponent = ({difficulty} : { difficulty : number }) => {
 
 function RecipeTile( { recipe } : {recipe : Recipe}) {
   return (
-    <div className="recipe-tile">
-      <img src={recipe.images[0]} alt={recipe.name}/>
-      <section className="recipe-info">
+    <div className="rounded border-amber-200 border-2 bg-amber-100">
+      <img className="w-full" src={recipe.images[0]} alt={recipe.name}/>
+      <div>
         <Link to={`/recipe/${recipe.id}`}>
-          <h2 className="text-3xl font-bold underline">{recipe.name}</h2>
+          <h2 className="text-3xl font-bold underline text-teal-400 hover:text-teal-300 text-center">
+            {recipe.name}
+          </h2>
         </Link>
-        <p>Time: {recipe.time}</p>
-        <p>Difficulty: <DifficultyRatingComponent difficulty={recipe.difficulty} /></p>
-        <p>Cuisine : {recipe.cuisine}</p>
-      </section>
+        <p className="font-sans text-lg font-semibold text-center">Time: {recipe.time}</p>
+        <p className="font-sans text-lg font-semibold text-center"><DifficultyRatingComponent difficulty={recipe.difficulty} /></p>
+        <p className="font-sans text-lg font-semibold text-center">Cuisine : {recipe.cuisine}</p>
+      </div>
     </div>
   );
 }

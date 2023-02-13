@@ -14,7 +14,7 @@ function RecipeList(props: RecipeProps) {
         </div>
     ));
     return (
-        <div className="row">
+        <div className="grid grid-cols-3 gap-3">
             {items}
         </div>
     )
