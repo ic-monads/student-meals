@@ -6,7 +6,7 @@ function RecipesPage() {
     return (
         <>
           <div className="bg-amber-50">
-            <h1 className="font-sans text-7xl text-lg font-semibold text-center pb-10">
+            <h1 className="font-sans text-8xl text-lg font-semibold text-center pb-10">
               Recipes
             </h1>
             <RecipeList recipes={ExampleRecipeList}/>
