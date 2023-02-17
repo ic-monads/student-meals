@@ -16,10 +16,10 @@ export default function RecipePage() {
 
   return(
     <div className="bg-amber-50 h-screen">
-      <h1 className="font-sans text-7xl text-lg font-semibold text-center pb-10">
+      <h1 className="font-sans text-7xl font-semibold text-center mt-0 mb-2">
         {recipe?.name}
       </h1>
-      <img src={recipe?.images[0]} alt={recipe?.name}/>
+      <img className="mx-auto" src={recipe?.images[0]} alt={recipe?.name}/>
       <div className="grid grid-cols-2 gap-5 align-center">
         <div>
           <Ingredients ingredients={recipe?.ingredients!} />
