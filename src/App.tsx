@@ -1,25 +1,40 @@
 import React from 'react';
-import RecipeTile from "./components/recipes/RecipeTile";
-import mashedPotatoes from "./interfaces/examples/Recipe";
+import { AuthProvider } from './contexts/AuthContext';
+import { DatabaseProvider } from "./contexts/DatabaseContext";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
 import RecipePage from './pages/recipes/RecipePage';
 import RecipesPage from './pages/recipes/RecipesPage';
+import Login from './pages/auth/Login';
+import Signup from './pages/auth/Signup';
+import PrivateRoute from './components/auth/PrivateRoute';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RecipesPage />
+    element: <PrivateRoute><RecipesPage /></PrivateRoute>
   },
   {
     path: "recipe/:recipeId",
-    element: <RecipePage />
+    element: <PrivateRoute><RecipePage /></PrivateRoute>
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/signup",
+    element: <Signup />
   }
 ])
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <DatabaseProvider>
+        <RouterProvider router={router} />
+      </DatabaseProvider>
+    </AuthProvider>
   );
 }
 

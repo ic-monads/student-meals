@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import RecipeList from "../../components/recipes/RecipeList";
 import ExampleRecipeList from "../../interfaces/examples/ExampleRecipeList";
+import { useAuth } from "../../contexts/AuthContext";
+import { useDatabase } from "../../contexts/DatabaseContext";
 import { Recipe } from "../../interfaces/recipes/Recipe";
 
 function RecipesPage() {
@@ -9,6 +11,8 @@ function RecipesPage() {
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [numRecipes, setNumRecipes] = useState(defaultNumRecipes);
     const [loading, setLoading] = useState(false);
+    const { logout } = useAuth();
+    const { testData } = useDatabase();
 
     const handleMoreClick = () => {
         setNumRecipes((numRecipes) => numRecipes + recipeIncrementation);
@@ -37,6 +41,13 @@ function RecipesPage() {
                     Recipes
                 </h1>
             </div>
+            
+            <button onClick={() => logout()}>Sign Out</button>
+
+            { testData && testData.map(t => {
+                return <p>{t.text}</p>
+            })}
+            
             {loading && (
                 <div className="center-page">
                 <span className="spinner primary"></span>
