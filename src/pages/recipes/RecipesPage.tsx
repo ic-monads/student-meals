@@ -1,23 +1,70 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RecipeList from "../../components/recipes/RecipeList";
 import ExampleRecipeList from "../../interfaces/examples/ExampleRecipeList";
 import { useAuth } from "../../contexts/AuthContext";
 import { useDatabase } from "../../contexts/DatabaseContext";
+import { Recipe } from "../../interfaces/recipes/Recipe";
 
 function RecipesPage() {
+    const defaultNumRecipes = 10;
+    const recipeIncrementation = 10;
+    const [recipes, setRecipes] = useState<Recipe[]>([]);
+    const [numRecipes, setNumRecipes] = useState(defaultNumRecipes);
+    const [loading, setLoading] = useState(false);
     const { logout } = useAuth();
     const { testData } = useDatabase();
 
+    const handleMoreClick = () => {
+        setNumRecipes((numRecipes) => numRecipes + recipeIncrementation);
+    }
+
+    useEffect(() => {
+        async function loadRecipes() {
+            setLoading(true);
+            try {
+                const data = ExampleRecipeList.slice(0, numRecipes);
+                console.log(numRecipes);
+                setRecipes(data);
+            } catch (e) {
+                console.log(e);
+            } finally {
+                setLoading(false);
+            }
+        }
+        loadRecipes();
+    }, [numRecipes]);
+
     return (
         <>
-            <h1>Recipes</h1>
+            <div className="bg-amber-50">
+                <h1 className="font-sans text-7xl text-lg font-semibold text-center pb-10">
+                    Recipes
+                </h1>
+            </div>
+            
             <button onClick={() => logout()}>Sign Out</button>
 
             { testData && testData.map(t => {
                 return <p>{t.text}</p>
             })}
             
-            <RecipeList recipes={ExampleRecipeList}/>
+            {loading && (
+                <div className="center-page">
+                <span className="spinner primary"></span>
+                <p>
+                    Loading...
+                </p>
+                </div>
+            )}
+            <RecipeList recipes={recipes}/>
+            <div className="row">
+                <div className="col-sm-12">
+                    <div className="button-group fluid">
+                        <button className="button default" onClick={handleMoreClick}>
+                            More
+                        </button>
+                    </div>
+                </div>
         </>
     )
 }

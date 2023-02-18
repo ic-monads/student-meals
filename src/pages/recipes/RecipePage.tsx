@@ -15,14 +15,18 @@ export default function RecipePage() {
   }, [])
 
   return(
-    <div>
-      <h1>{recipe?.name}</h1>
-      <p>Difficulty: {recipe?.difficulty}</p>
-      <p>Cuisine: {recipe?.cuisine}</p>
-      <p></p>
-      <Ingredients ingredients={recipe?.ingredients!} />
-      <Equipment equipment={recipe?.equipment!} />
-      <Instructions instructions={recipe?.instructions!} />
+    <div className="bg-amber-50 h-screen">
+      <h1 className="font-sans text-7xl font-semibold text-center mt-0 mb-2">
+        {recipe?.name}
+      </h1>
+      <img className="mx-auto" src={recipe?.images[0]} alt={recipe?.name}/>
+      <div className="grid grid-cols-2 gap-5 align-center">
+        <div>
+          <Ingredients ingredients={recipe?.ingredients!} />
+          <Equipment equipment={recipe?.equipment!} />
+        </div>
+        <Instructions instructions={recipe?.instructions!} />
+      </div>
     </div>
   );
 }
