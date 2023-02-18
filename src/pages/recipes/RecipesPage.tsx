@@ -54,7 +54,6 @@ function RecipesPage() {
                         </button>
                     </div>
                 </div>
-            </div>
         </>
     )
 }
