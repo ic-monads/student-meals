@@ -6,8 +6,8 @@ import { useDatabase } from "../../contexts/DatabaseContext";
 import { Recipe } from "../../interfaces/recipes/Recipe";
 
 function RecipesPage() {
-    const defaultNumRecipes = 10;
-    const recipeIncrementation = 10;
+    const defaultNumRecipes = 9;
+    const recipeIncrementation = 9;
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [numRecipes, setNumRecipes] = useState(defaultNumRecipes);
     const [loading, setLoading] = useState(false);
@@ -35,37 +35,44 @@ function RecipesPage() {
     }, [numRecipes]);
 
     return (
-        <>
-            <div className="bg-amber-50">
-                <h1 className="font-sans text-7xl text-lg font-semibold text-center pb-10">
+      <>
+          <div className = "bg-amber-50">
+              <div className="flex justify-end px-5 py-5">
+                  <button className="bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full"
+                          onClick={() => logout()}>
+                    Sign Out
+                  </button>
+              </div>
+              <div className="flex justify-center">
+                  <h1 className="font-sans text-5xl text-lg font-semibold text-center pb-10 justify-center">
                     Recipes
-                </h1>
-            </div>
-            
-            <button onClick={() => logout()}>Sign Out</button>
+                  </h1>
+              </div>
+          </div>
+          
+          { testData && testData.map(t => {
+                        return <p>{t.text}</p>
+                    })}
 
-            { testData && testData.map(t => {
-                return <p>{t.text}</p>
-            })}
-            
-            {loading && (
-                <div className="center-page">
+          {loading && (
+            <div className="center-page">
                 <span className="spinner primary"></span>
                 <p>
                     Loading...
                 </p>
-                </div>
-            )}
-            <RecipeList recipes={recipes}/>
-            <div className="row">
-                <div className="col-sm-12">
-                    <div className="button-group fluid">
-                        <button className="button default" onClick={handleMoreClick}>
-                            More
-                        </button>
-                    </div>
-                </div>
-        </>
+            </div>
+          )}
+
+          <RecipeList recipes={recipes}/>
+          <div className = "py-5 grid place-items-center">
+              <button className="bg-teal-400 hover:bg-teal-600 text-white font-bold py-4 px-4 rounded-full"
+                      onClick={handleMoreClick}>
+                  More Recipes
+              </button>
+          </div>
+          
+
+      </>
     )
 }
 
