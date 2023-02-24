@@ -12,7 +12,7 @@ function RecipesPage() {
     const [numRecipes, setNumRecipes] = useState(defaultNumRecipes);
     const [loading, setLoading] = useState(false);
     const { logout } = useAuth();
-    const { testData } = useDatabase();
+    // const { testData } = useDatabase();
 
     const handleMoreClick = () => {
         setNumRecipes((numRecipes) => numRecipes + recipeIncrementation);
@@ -35,8 +35,8 @@ function RecipesPage() {
     }, [numRecipes]);
 
     return (
-      <>
-          <div className = "bg-amber-50">
+      <div className="bg-slate-50 p-2">
+          <div>
               <div className="flex justify-end px-5 py-5">
                   <button className="bg-teal-400 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full"
                           onClick={() => logout()}>
@@ -44,15 +44,11 @@ function RecipesPage() {
                   </button>
               </div>
               <div className="flex justify-center">
-                  <h1 className="font-sans text-5xl text-lg font-semibold text-center pb-10 justify-center">
+                  <h1 className="font-sans text-3xl font-semibold text-center pb-10 justify-center">
                     Recipes
                   </h1>
               </div>
           </div>
-          
-          { testData && testData.map(t => {
-                        return <p>{t.text}</p>
-                    })}
 
           {loading && (
             <div className="center-page">
@@ -72,7 +68,7 @@ function RecipesPage() {
           </div>
           
 
-      </>
+      </div>
     )
 }
 

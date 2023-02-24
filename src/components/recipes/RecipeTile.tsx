@@ -15,17 +15,22 @@ const DifficultyRatingComponent = ({difficulty} : { difficulty : number }) => {
 
 function RecipeTile( { recipe } : {recipe : Recipe}) {
   return (
-    <div className="rounded border-amber-200 border-2 bg-amber-100">
-      <img className="w-full" src={recipe.images[0]} alt={recipe.name}/>
-      <div>
+    <div className="rounded-2xl border-slate-200 border-2 bg-white overflow-hidden">
+      <div className={`bg-cover bg-center h-[200px] lg:h-[300px] p-2`} style={{backgroundImage: `url(${recipe.images[0]})` }}>
+        {/* <img className="w-full" src={recipe.images[0]} alt={recipe.name}/> */}
+        <p className="text-center font-sans text-sm text-white px-2 font-medium bg-teal-500 bg-opacity-50 rounded-full w-16">{recipe.cuisine}</p>
+      </div>
+      
+      <div className="px-2 py-3 text-left">
         <Link to={`/recipe/${recipe.id}`}>
-          <h2 className="text-3xl font-bold underline text-teal-400 hover:text-teal-300 text-center">
+          <h2 className="text-2xl font-bold">
             {recipe.name}
           </h2>
         </Link>
-        <p className="font-sans text-lg font-semibold text-center">Time: {recipe.time}</p>
-        <p className="font-sans text-lg font-semibold text-center"><DifficultyRatingComponent difficulty={recipe.difficulty} /></p>
-        <p className="font-sans text-lg font-semibold text-center">Cuisine : {recipe.cuisine}</p>
+        <div className="flex flex-row justify-between py-1">
+          <p className="font-sans text-lg text-slate-600">Time: {recipe.time}</p>
+          <p className="font-sans text-lg font-medium text-slate-600"><DifficultyRatingComponent difficulty={recipe.difficulty} /></p>
+        </div>
       </div>
     </div>
   );

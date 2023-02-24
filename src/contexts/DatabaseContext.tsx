@@ -73,7 +73,11 @@ const databaseContextDefaults : databaseContextTypes = {
 
 export const DatabaseContext = React.createContext<databaseContextTypes>(databaseContextDefaults);
 
-export default function DatabaseContextProvider({ children }: DatabaseContextProps) {
+export function useDatabase() {
+    return React.useContext(DatabaseContext);
+}
+
+export function DatabaseProvider({ children }: DatabaseContextProps) {
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     
     const getRecipes = async () => {

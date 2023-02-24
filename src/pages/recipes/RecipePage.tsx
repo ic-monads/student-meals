@@ -15,7 +15,7 @@ export default function RecipePage() {
   }, [])
 
   return(
-    <div className="bg-amber-50 h-screen">
+    <div className="h-screen">
       <h1 className="font-sans text-7xl font-semibold text-center mt-0 mb-2">
         {recipe?.name}
       </h1>
